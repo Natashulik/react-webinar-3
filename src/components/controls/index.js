@@ -1,21 +1,31 @@
 import React from "react";
-import PropTypes from 'prop-types';
-import './style.css';
+import PropTypes from "prop-types";
+import "./style.css";
 
-function Controls({onAdd}) {
+function Controls({setIsBasketOpen, basket}) {
+
+const handleClick = () => {
+  setIsBasketOpen(true);
+}
+const totalSum = basket.reduce((sum,item) =>sum +  item.quantity*item.price, 0);
+const totalPositions = basket.length;
+
   return (
-    <div className='Controls'>
-      <button onClick={() => onAdd()}>Добавить</button>
+    <div className="Controls">
+      <div> В корзине: {totalPositions}  товара / {totalSum} ₽</div>
+      <button onClick={handleClick}>Перейти</button>
     </div>
-  )
+  );
 }
 
 Controls.propTypes = {
-  onAdd: PropTypes.func
+  isBasketOpen: PropTypes.bool,
+  setIsBasketOpen: PropTypes.func,
 };
 
 Controls.defaultProps = {
-  onAdd: () => {}
-}
+  setIsBasketOpen: () => {},
+};
+
 
 export default React.memo(Controls);

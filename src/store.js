@@ -1,4 +1,4 @@
-import {generateCode} from "./utils";
+
 
 /**
  * Хранилище состояния приложения
@@ -18,8 +18,8 @@ class Store {
     this.listeners.push(listener);
     // Возвращается функция для удаления добавленного слушателя
     return () => {
-      this.listeners = this.listeners.filter(item => item !== listener);
-    }
+      this.listeners = this.listeners.filter((item) => item !== listener);
+    };
   }
 
   /**
@@ -40,49 +40,43 @@ class Store {
     for (const listener of this.listeners) listener();
   }
 
-  /**
-   * Добавление новой записи
-   */
-  addItem() {
-    this.setState({
-      ...this.state,
-      list: [...this.state.list, {code: generateCode(), title: 'Новая запись'}]
-    })
-  };
 
   /**
    * Удаление записи по коду
    * @param code
    */
-  deleteItem(code) {
-    this.setState({
-      ...this.state,
-      // Новый список, в котором не будет удаляемой записи
-      list: this.state.list.filter(item => item.code !== code)
-    })
-  };
+    deleteItem(code) {
+      this.setState({
+        ...this.state,
+        basket: this.state.basket.filter(item => item.code !== code)
+      })
+    };
 
   /**
-   * Выделение записи по коду
-   * @param code
+   * Добавление товара в корзину
    */
-  selectItem(code) {
-    this.setState({
-      ...this.state,
-      list: this.state.list.map(item => {
-        if (item.code === code) {
-          // Смена выделения и подсчёт
-          return {
-            ...item,
-            selected: !item.selected,
-            count: item.selected ? item.count : item.count + 1 || 1,
-          };
-        }
-        // Сброс выделения если выделена
-        return item.selected ? {...item, selected: false} : item;
-      })
-    })
-  }
+ 
+    addItem(item) {
+      const { basket } = this.state;
+      const existItem = basket.find((basketItem) => basketItem.code === item.code);
+    
+      if (existItem) {
+        const updatedBasket = basket.map((basketItem) =>
+          basketItem.code === item.code ? { ...basketItem, quantity: basketItem.quantity + 1 } : basketItem
+        );
+    
+        this.setState({
+          ...this.state,
+          basket: updatedBasket,
+        });
+      } else {
+        this.setState({
+          ...this.state,
+          basket: [...basket, { ...item, quantity: 1 }],
+        });
+      }
+    }
+    
 }
 
 export default Store;
