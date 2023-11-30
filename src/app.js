@@ -26,13 +26,13 @@ function App({ store }) {
      }, [store]),
      };
 
-
   return (
     <PageLayout>
       <Head title="Магазин" />
       <Controls  basket={basket} setIsBasketOpen={setIsBasketOpen} /> 
       <List list={list} onAddItem={callbacks.onAddItem} />
-      {isBasketOpen && <div className="overlay"> <Basket basket={basket} setIsBasketOpen={setIsBasketOpen}  onDeleteItem={callbacks.onDeleteItem}/> </div>}
+      {isBasketOpen && <div className="overlay"> <Basket basket={basket} setIsBasketOpen={setIsBasketOpen} 
+       onDeleteItem={callbacks.onDeleteItem}/> </div>}
     </PageLayout>
   );
 }

@@ -18,7 +18,7 @@ function BasketItem({ item, onDeleteItem }) {
       </div>
       <div className="BasketItem-quantity"> {item.quantity} шт</div>
       <div className="BasketItem-actions">
-        <button onClick={handleDelete}>Удалить</button>
+        <button onClick={handleDelete} className="BasketItem-button">Удалить</button>
       </div>
     </div>
   );
@@ -31,6 +31,12 @@ BasketItem.propTypes = {
     price: PropTypes.number,
     quantity: PropTypes.number,
   }).isRequired,
+  onDeleteItem: PropTypes.func.isRequired,
 };
+
+BasketItem.defaultProps = {
+  onDeleteItem: () => {}
+}
+
 
 export default React.memo(BasketItem);

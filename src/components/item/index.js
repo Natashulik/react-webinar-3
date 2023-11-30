@@ -9,7 +9,7 @@ function Item({ item, onAddItem }) {
     console.log(item);
   };
 
-  return (
+    return (
     <div className="Item">
       <div className="Item-code">{item.code}</div>
       <div className="Item-title"> {item.title} </div>

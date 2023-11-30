@@ -1,5 +1,17 @@
 .Controls {
   display: flex;
   justify-content: flex-end;
-  padding: 20px;
+  padding: 18px 20px 24px;
+  border-bottom: 1px dashed #ccc;
+  font-size: 18px;
+}
+
+.Controls-actions {
+ width: 80px;
+}
+
+.Controls-result span {
+font-weight: 700;
+margin-right: 20px;
+margin-left: 10px;
 }

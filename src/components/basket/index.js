@@ -21,7 +21,7 @@ const totalSum = basket.reduce((sum,item) =>sum +  item.quantity*item.price, 0);
           <BasketItem item={item} onDeleteItem={onDeleteItem}/>
         </div>
       ))}
-      <div className="Basket-total"> Итого {totalSum} </div>
+      <div className="Basket-total"> Итого <span className="Basket-total-span"> {Intl.NumberFormat("ru-RU").format(totalSum)} ₽</span></div>
     </div>
   );
 }
@@ -36,10 +36,12 @@ Basket.propTypes = {
        })
   ).isRequired,
   onDeleteItem: PropTypes.func.isRequired,
+  setIsBasketOpen: PropTypes.func.isRequired
 };
 
 Basket.defaultProps = {
   onDeleteItem: () => {},
+  setIsBasketOpen: () => {} 
 }
 
 

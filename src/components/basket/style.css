@@ -27,11 +27,6 @@
   }
 
   .Basket-item {
-    border-bottom: 1px dashed #ccc;
-  }
-
-  .Basket-item:first-child {
-    background-color: blue;
     border-top: 1px dashed #ccc;
   }
 
@@ -46,5 +41,20 @@
   margin-top: 32px;
   margin-right: 32px; 
   }
+
+  .Basket-total {
+    font-size: 18px;
+    font-weight: 700;
+    border-top: 1px dashed #ccc;
+    padding-top: 20px;
+    padding-right: 120px;
+    height: 130px;
+    display: flex;
+    justify-content: flex-end;
+    }
+
+    .Basket-total-span {
+      margin-left: 53px;
+      }
 
 
