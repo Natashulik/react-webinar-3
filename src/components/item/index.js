@@ -5,8 +5,8 @@ import "./style.css";
 
 function Item({ item, onAddItem }) {
   const handleClick = () => {
-    onAddItem(item);
-    console.log(item);
+    onAddItem(item.code);
+    console.log(item.code);
   };
 
     return (

@@ -1,5 +1,3 @@
-
-
 /**
  * Хранилище состояния приложения
  */
@@ -40,43 +38,44 @@ class Store {
     for (const listener of this.listeners) listener();
   }
 
-
   /**
    * Удаление записи по коду
    * @param code
    */
-    deleteItem(code) {
-      this.setState({
-        ...this.state,
-        basket: this.state.basket.filter(item => item.code !== code)
-      })
-    };
+  deleteItem(code) {
+    this.setState({
+      ...this.state,
+      basket: this.state.basket.filter((item) => item.code !== code),
+    });
+  }
 
   /**
    * Добавление товара в корзину
    */
- 
-    addItem(item) {
-      const { basket } = this.state;
-      const existItem = basket.find((basketItem) => basketItem.code === item.code);
-    
-      if (existItem) {
-        const updatedBasket = basket.map((basketItem) =>
-          basketItem.code === item.code ? { ...basketItem, quantity: basketItem.quantity + 1 } : basketItem
-        );
-    
-        this.setState({
-          ...this.state,
-          basket: updatedBasket,
-        });
-      } else {
-        this.setState({
-          ...this.state,
-          basket: [...basket, { ...item, quantity: 1 }],
-        });
-      }
+
+  addItem(code) {
+    const { basket, list } = this.state;
+    const existItem = basket.find((basketItem) => basketItem.code === code);
+
+    if (existItem) {
+      const updatedBasket = basket.map((basketItem) =>
+        basketItem.code === code
+          ? { ...basketItem, quantity: basketItem.quantity + 1 }
+          : basketItem
+      );
+
+      this.setState({
+        ...this.state,
+        basket: updatedBasket,
+      });
+    } else {
+      const item = list.find((basketItem) => basketItem.code === code);
+      this.setState({
+        ...this.state,
+        basket: [...basket, { ...item, quantity: 1 }],
+      });
     }
-    
+  }
 }
 
 export default Store;

@@ -1,48 +1,45 @@
 .BasketItem {
-    display: flex;
-    justify-content: flex-start;
-    transition: background-color 1s;
-    width: 960px;
-    height: 63px;
-  }
-  
- 
-  .BasketItem-code {
-    padding: 20px 21px 21px 19px;
-   
-  }
-  
-  .BasketItem-title {
-    width: 100%;
-    padding-top: 20px;
-    padding-bottom: 21px;
-  
-  }
-  
-  .BasketItem-price {
-    width: 20%;
-    padding: 20px 15px 20px 0;
-    font-size: 18px;
-    display: flex;
-    justify-content: flex-end;
-    }
+  display: flex;
+  justify-content: flex-start;
+  transition: background-color 1s;
+  width: 960px;
+  height: 63px;
+}
 
-  .BasketItem-quantity {
-    width: 15%;
-    padding: 20px 0 20px;
-    font-size: 18px;
-    display: flex;
-    justify-content: flex-end;
-     }
-  
+.BasketItem-code {
+  padding: 20px 21px 21px 19px;
+}
 
-  .BasketItem-actions {
-    display: flex;
-    justify-content: flex-end;
-    padding: 20px 20px 21px 21px;
-    }
+.BasketItem-title {
+  width: 100%;
+  padding-top: 20px;
+  padding-bottom: 21px;
+}
 
-    .BasketItem-button {
-      width: 76px;
-    }
-  
+.BasketItem-price {
+  width: 20%;
+  padding: 20px 15px 20px 0;
+  font-size: 18px;
+  display: flex;
+  justify-content: flex-end;
+  color: rgba(64, 64, 64, 1);
+}
+
+.BasketItem-quantity {
+  width: 15%;
+  padding: 20px 0 20px;
+  font-size: 18px;
+  display: flex;
+  justify-content: flex-end;
+  color: rgba(64, 64, 64, 1);
+}
+
+.BasketItem-actions {
+  display: flex;
+  justify-content: flex-end;
+  padding: 20px 20px 21px 21px;
+}
+
+.BasketItem-button {
+  width: 76px;
+}
