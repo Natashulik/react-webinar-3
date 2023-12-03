@@ -21,7 +21,7 @@ const variants = {
     <div className="Controls">
       <div className="Controls-result">В корзине: 
      { totalPositions? <span>{totalPositions} {plural(totalPositions, variants)} / {Intl.NumberFormat("ru-RU").format(totalSum)} ₽ </span> : 
-     <span> пусто </span> }
+     <span>пусто </span> }
       </div> 
       <button onClick={handleClick} className="Controls-actions">Перейти</button>
     </div>

@@ -1,13 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
-import BasketItem  from "../basketItem";
+import List from "../list";
 import "./style.css";
 
-function Basket({ basket, setIsBasketOpen, onDeleteItem}) {
+function Basket(props) {
+
  const handleBasketClose = () =>  {
-  setIsBasketOpen(false);
+  props.setIsBasketOpen(false);
  }
-const totalSum = basket.reduce((sum,item) =>sum +  item.quantity*item.price, 0);
+const totalSum = props.list.reduce((sum,item) =>sum +  item.quantity*item.price, 0);
 
   return (
     <div className="Basket">
@@ -15,19 +16,14 @@ const totalSum = basket.reduce((sum,item) =>sum +  item.quantity*item.price, 0);
       <h1 className="Basket-title">Корзина</h1>
       <button className="Basket-button" onClick={handleBasketClose}>Закрыть</button>
       </div>
-     
-      {basket.map((item) => (
-        <div key={item.code} className="Basket-item">
-          <BasketItem item={item} onDeleteItem={onDeleteItem}/>
-        </div>
-      ))}
+      <List list={props.list} onDeleteItem={props.onDeleteItem} isBasket={true} />
       <div className="Basket-total"> Итого <span className="Basket-total-span"> {Intl.NumberFormat("ru-RU").format(totalSum)} ₽</span></div>
     </div>
   );
 }
 
 Basket.propTypes = {
-  basket: PropTypes.arrayOf(
+ list: PropTypes.arrayOf(
     PropTypes.shape({
       code: PropTypes.number,
       title:  PropTypes.string,
@@ -35,11 +31,13 @@ Basket.propTypes = {
       quantity: PropTypes.number,
        })
   ).isRequired,
+  isBasket: PropTypes.bool.isRequired,
   onDeleteItem: PropTypes.func.isRequired,
   setIsBasketOpen: PropTypes.func.isRequired
 };
 
 Basket.defaultProps = {
+  isBasket: true,
   onDeleteItem: () => {},
   setIsBasketOpen: () => {} 
 }

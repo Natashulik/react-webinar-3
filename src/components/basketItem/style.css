@@ -4,6 +4,7 @@
   transition: background-color 1s;
   width: 960px;
   height: 63px;
+  border-top: 1px dashed #ccc;
 }
 
 .BasketItem-code {

@@ -3,6 +3,7 @@ import List from "./components/list";
 import Controls from "./components/controls";
 import Head from "./components/head";
 import PageLayout from "./components/page-layout";
+import ModalLayout from "./components/modal-layout";
 import Basket from "./components/basket";
 import { useState } from "react";
 
@@ -16,7 +17,7 @@ function App({ store }) {
 
   const list = store.getState().list;
   const basket = store.getState().basket;
-
+ 
   const callbacks = {
     onAddItem: useCallback((item) => {
       store.addItem(item);
@@ -31,10 +32,13 @@ function App({ store }) {
       <Head title="Магазин" />
       <Controls  basket={basket} setIsBasketOpen={setIsBasketOpen} /> 
       <List list={list} onAddItem={callbacks.onAddItem} />
-      {isBasketOpen && <div className="overlay"> <Basket basket={basket} setIsBasketOpen={setIsBasketOpen} 
-       onDeleteItem={callbacks.onDeleteItem}/> </div>}
+      {isBasketOpen && (
+      <ModalLayout>
+        <Basket list={basket} setIsBasketOpen={setIsBasketOpen} onDeleteItem={callbacks.onDeleteItem} isBasket/>
+      </ModalLayout>
+      )}
     </PageLayout>
-  );
+ );
 }
 
 export default App;
