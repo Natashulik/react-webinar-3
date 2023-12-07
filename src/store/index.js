@@ -59,6 +59,7 @@ class Store {
     // Вызываем всех слушателей
     for (const listener of this.listeners) listener(this.state);
   }
+  
 }
 
 export default Store;
